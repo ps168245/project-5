@@ -32,8 +32,36 @@ const Aboutus = () => {
     
   },
   
+  headertext:{
+
+    position: 'absolute',
+    width: 360,
+    height: 44,
+    left: 0,
+    top: 117,
+    
+    
+    fontStyle: normal,
+    fontWeight: 600,
+    fontSize: 36,
+    lineHeight: 44,
+    /* identical to box height */
+    
+    display: flex,
+    alignitems: center,
+    textalign: center,
+    
+    color: FFFFFF,
+    
+    borderWidth: 1,
+    borderStyle: solid,
+    borderColor: 000000,
+
+
+
+  }
 
 });
 
 
-export default Aboutus
+export default aboutus
