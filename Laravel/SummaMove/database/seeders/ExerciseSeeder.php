@@ -16,11 +16,11 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('exercise')->insert([
-            'name' => "Achievement1",
-            'description' => "",
-            'starttime' => carbon::now(),
-            'endtime' => carbon::now()
+        DB::table('exercises')->insert([
+            'name' => "Exercise1",
+            'description' => "sdafegredhtyjukli;o",
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
     }
 }

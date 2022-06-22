@@ -21,8 +21,10 @@ class AchievementSeeder extends Seeder
             'amount' => 3,
             'user_id' => 1,
             'exercise_id' => 1,
-            'starttime' => carbon::now(),
-            'endtime' => carbon::now()
+            'startime' => carbon::now(),
+            'endtime' => carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
 
         DB::table('achievements')->insert([
@@ -30,8 +32,10 @@ class AchievementSeeder extends Seeder
             'amount' => 3,
             'user_id' => 1,
             'exercise_id' => 1,
-            'starttime' => carbon::now(),
-            'endtime' => carbon::now()
+            'startime' => carbon::now(),
+            'endtime' => carbon::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
         ]);
     }
 }
