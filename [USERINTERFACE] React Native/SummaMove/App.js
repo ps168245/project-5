@@ -1,12 +1,55 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import Homepage from './Components/homepage';
+import ExerciseScreen from './Components/exerciseScreen';
+import About_us from './Components/aboutus';
+
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
+
+
+
+
+const MyTabs = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen 
+      name="Home" 
+      component={Homepage}         
+      options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={26} backgroundColor={'#fff'} />
+          ), }}/>
+          
+      <Tab.Screen 
+          name="About_us" 
+          component={About_us} 
+          options={{
+            tabBarLabel: 'About us',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="format-align-justify" color={color} size={26} />
+            ),
+          
+          }}/>
+
+    </Tab.Navigator>
+    
+  );
+}
+
+const App = () => {
+  return (
+    <NavigationContainer >
+      <MyTabs/>
+    </NavigationContainer>
   );
 }
 
@@ -18,3 +61,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+export default App;
