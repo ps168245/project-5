@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Achievement;
 use Illuminate\Http\Request;
 
 class AchievementController extends Controller
@@ -15,7 +16,7 @@ class AchievementController extends Controller
     public function index()
     {
         //
-        
+        return Achievement::All(); 
     }
 
     /**
@@ -45,9 +46,9 @@ class AchievementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Achievement $achievement)
     {
-        //
+        return $achievement; 
     }
 
     /**
@@ -79,7 +80,7 @@ class AchievementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Achievement $achievement)
     {
         //
     }

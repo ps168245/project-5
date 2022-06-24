@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Database\Seeders\AchievementSeeder;
 use Illuminate\Http\Request;
+use App\Models\Exercise;
 
 class ExerciseController extends Controller
 {
@@ -16,7 +16,7 @@ class ExerciseController extends Controller
     public function index()
     {
         //
-        return Achievement();
+        return Exercise::All();
     }
 
     /**
@@ -46,10 +46,10 @@ class ExerciseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Exercise $exercise)
     {
         //
-        return $achievement;
+        return $exercise;
     }
 
     /**
@@ -70,9 +70,10 @@ class ExerciseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Exercise $exercise)
     {
-        //
+        $exercise->update($request->all());
+        return $exercise;
     }
 
     /**
@@ -81,8 +82,8 @@ class ExerciseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Exercise $exercise)
     {
-        //
+        $exercise->delete();
     }
 }
