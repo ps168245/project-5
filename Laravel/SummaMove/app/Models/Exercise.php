@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Exercise extends Model
 {
     use HasFactory;
+    public $timestamps = true;
+    protected $fillable = ["id", "name", "description"];
 }
