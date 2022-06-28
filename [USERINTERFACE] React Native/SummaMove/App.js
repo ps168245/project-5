@@ -35,7 +35,7 @@ const MyTabs = () => {
           options={{
             tabBarLabel: 'About us',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="format-align-justify" color={color} size={26} />
+              <MaterialCommunityIcons name="account-multiple" color={color} size={26} />
             ),
           
           }}/>
