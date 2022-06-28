@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon as carbon;
@@ -16,6 +17,7 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('exercises')->truncate();
         DB::table('exercises')->insert([
             'name' => "Squat",
             'description' => "
