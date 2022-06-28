@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('exercise', ExerciseController::class) ->parameters(['exercises' => 'exercise']); 
+Route::apiResource('exercise', ExerciseController::class) ->parameters(['exercises' => 'exercise'])->only([
+    'index', 'show'
+]);
 
 
 Route::post('/register', [AuthenticationController::class, 'register']);
@@ -29,5 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('profile', function(Request $request) { return auth()->user();});
     Route::post('/logout', [AuthenticationController::class, 'logout']);
     Route::apiResource('achievement', AchievementController::class) ->parameters(['achievements' => 'achievement']);
+
+    Route::resource('exercise', ExerciseController::class);
 
     });
