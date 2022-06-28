@@ -67,7 +67,9 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, Exercise $exercise)
     {
-        $exercise->update($request->all()); return $exercise;
+        //$exercise->update($request->all()); return $exercise;
+        $exercise->update($request->all());
+        return response()->json($exercise, 202);
     }
 
     /**
@@ -78,6 +80,7 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise)
     {
-        $exercise->delete();
+        // $exercise->delete();
+        return response()->json($exercise->delete() ? "Succesvol verwijderd":"Probleem met het verwijderen van de exercise", 202);
     }
 }
