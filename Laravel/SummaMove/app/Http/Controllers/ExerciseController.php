@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Exercise;
 
+use Illuminate\Support\Facades\Route;
+
 class ExerciseController extends Controller
 {
     /**
@@ -24,10 +26,7 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +36,11 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+        ]);
+        return Exercise::create($request->all());
     }
 
     /**
@@ -52,16 +55,8 @@ class ExerciseController extends Controller
         return $exercise;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -72,8 +67,7 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, Exercise $exercise)
     {
-        $exercise->update($request->all());
-        return $exercise;
+        $exercise->update($request->all()); return $exercise;
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Achievement;
 use Illuminate\Http\Request;
+use Laravel\Sanctum\PersonalAccessToken;
+
 
 class AchievementController extends Controller
 {
@@ -13,11 +15,17 @@ class AchievementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+    public function index(Request $request)
     {
         //
-        return Achievement::All(); 
+        $user = auth()->user();
+
+        $achievements = Achievement::all()->where('user_id', $user->id);
+        return response()->json($achievements, 200);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,6 +46,15 @@ class AchievementController extends Controller
     public function store(Request $request)
     {
         //
+        $user = auth()->user();
+        $achievement = new Achievement();
+        $achievement->name = $request->name;
+        $achievement->amount = $request->amount;
+        $achievement->user_id = $user->id;
+        $achievement->exercise_id = $request->exercise_id;
+        $achievement->startime = $request->startime;
+        $achievement->endtime = $request->endtime;
+        return response()->json($achievement->save(), 201);
     }
 
     /**

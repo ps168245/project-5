@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon as carbon;
@@ -16,6 +17,7 @@ class AchievementSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('achievements')->truncate();
         DB::table('achievements')->insert([
             'name' => "Achievement1",
             'amount' => 3,
@@ -40,7 +42,7 @@ class AchievementSeeder extends Seeder
         DB::table('achievements')->insert([
             'name' => "Achievement2",
             'amount' => 3,
-            'user_id' => 1,
+            'user_id' => 2,
             'exercise_id' => 6,
             'startime' => carbon::now(),
             'endtime' => carbon::now(),

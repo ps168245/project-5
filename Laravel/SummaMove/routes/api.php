@@ -32,8 +32,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthenticationController::class, 'logout']);
     Route::apiResource('achievement', AchievementController::class) ->parameters(['achievements' => 'achievement']);
 
-    Route::resource('exercise', AuthenticationController::class)->only([
-        'create'
-    ]);
+    Route::resource('exercise', ExerciseController::class);
 
     });
