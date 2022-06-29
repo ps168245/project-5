@@ -10,6 +10,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Homepage from './Components/homepage';
 import ExerciseScreen from './Components/exerciseScreen';
 import About_us from './Components/aboutus';
+import login from './Components/login';
+import exerciseScreen from './Components/exerciseScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -20,6 +22,16 @@ const Stack = createStackNavigator();
 const MyTabs = () => {
   return (
     <Tab.Navigator>
+
+<Tab.Screen 
+      name="Exercises" 
+      component={ExerciseScreen}         
+      options={{
+          tabBarLabel: 'Exercises',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="check" color={color} size={26} backgroundColor={'#fff'} />
+          ), }}/>
+          
       <Tab.Screen 
       name="Home" 
       component={Homepage}         
