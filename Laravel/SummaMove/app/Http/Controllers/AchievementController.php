@@ -89,6 +89,9 @@ class AchievementController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $achievement->update($request->all());
+        return response()->json($achievement, 202);
     }
 
     /**
@@ -100,5 +103,6 @@ class AchievementController extends Controller
     public function destroy(Achievement $achievement)
     {
         //
+        return response()->json($achievement->delete() ? "Succesvol verwijderd":"Probleem met het verwijderen van de exercise", 202);
     }
 }
