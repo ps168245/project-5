@@ -23,7 +23,7 @@ const MyTabs = () => {
   return (
     <Tab.Navigator>
 
-<Tab.Screen 
+      <Tab.Screen 
       name="Exercises" 
       component={ExerciseScreen}         
       options={{
