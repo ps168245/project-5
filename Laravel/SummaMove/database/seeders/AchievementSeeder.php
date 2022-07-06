@@ -17,7 +17,7 @@ class AchievementSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('achievements')->truncate();
+        // DB::table('achievements')->truncate();
         DB::table('achievements')->insert([
             'name' => "Achievement1",
             'amount' => 3,
