@@ -18,6 +18,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
+=======
+        // DB::table('users')->truncate();
+>>>>>>> ab4749c9b49c8afa6fc65188d7bad9817f09f492
         DB::table('users')->insert([
             'name' => "Jan Jansen",
             'email' => "JJ@gmail.com",

@@ -8,10 +8,11 @@ function textAreaAdjust(element = document.getElementById('description')) {
     element.style.height = (25 + element.scrollHeight)+"px";
 }
 </script>
-
+<form action="{{ route('exercise.edit', ['exercise' => $exercise->id]) }}" method="POST">
+<input type='hidden' name='_method' value='PUT'>
 <?php
     echo '
-        <form action="/exercise" method="POST">
+        
             <input type="hidden" name="_token" value="' . csrf_token() . '">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" value=' . $exercise->name . ' required><br>
@@ -20,10 +21,10 @@ function textAreaAdjust(element = document.getElementById('description')) {
             <textarea onkeyup="textAreaAdjust(this)" cols="' . 120 . '" type="description" id="description" name="description">' . $exercise->description . '</textarea><br>
 
             <input type="submit" value="Edit">
-        </form>';
+        ';
 
 ?>
-
+</form>
 <script>
     textAreaAdjust();
 </script>
