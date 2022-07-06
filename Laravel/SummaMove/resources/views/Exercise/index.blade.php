@@ -5,7 +5,7 @@
 <?php
     echo "
     <table class='flex-1 bg-white border border-gray-700 min-w-half flex-initial w-16'>
-        <caption class='text-sm font-medium text-gray-900 px-6 py-4 text-left' ><b>Users:</b></caption>
+        <caption class='text-sm font-medium text-gray-900 px-6 py-4 text-left' ><b>Exercises:</b></caption>
         <tr>
             <th class='border border-gray-700 text-sm font-medium text-gray-900 px-6 py-4 text-left'>ID</th>
             <th class='border border-gray-700 text-sm font-medium text-gray-900 px-6 py-4 text-left'>Name</th>

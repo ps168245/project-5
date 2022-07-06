@@ -21,5 +21,13 @@ Route::get('/', function () {
 });
 
 // protected routes
-Route::resource("user", UserController::class);
-Route::resource("exercise", ExerciseController::class);
+Route::resource("user", UserController::class, [
+    'names' => [
+        'update' => 'user.edit',
+        ]
+]);
+Route::resource("exercise", ExerciseController::class, [
+    'names' => [
+        'update' => 'exercise.edit',
+        ]
+]);

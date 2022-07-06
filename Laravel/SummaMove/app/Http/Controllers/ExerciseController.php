@@ -91,12 +91,13 @@ class ExerciseController extends Controller
             $exercise = Exercise::findOrFail($id);
             $validated = $request->validate([
                 'name' => 'required|max:255',
-                'description' => 'required|max:255',
+                'description' => 'required|max:1000',
             ]);
 
             $exercise->name = $validated['name'];
             $exercise->description = $validated['description'];
             $exercise->save();
+            return view('exercise.show', ['exercise' => $exercise]);
         }
         catch(\Exception $e)
         {
