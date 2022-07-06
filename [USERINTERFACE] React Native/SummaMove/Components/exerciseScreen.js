@@ -1,17 +1,17 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert, FlatList, Image, url, ImageBackground,WebFont } from 'react-native';
-import React, { Component, useEffect, useState } from 'react';
-import { Ionicons } from '@expo/vector-icons';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/stack';
+import exercisesAll from './exercisesAll';
 
+//navigatie
+const Stack = createNativeStackNavigator();
+
+//Uiterlijk
 const ExerciseScreen = () => {
     return (
-  <View style={styles.container}>
-
-    </View>
+  <ExStack />
     );
 }
+<<<<<<< HEAD
 
 const List = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
@@ -76,48 +76,26 @@ function Details({ route }) {
               <Text style={{marginTop: 20, padding: 10, color: '#DA624E'}}>{description}</Text>
           </View>
       </View>
+=======
+//De paginas
+const ExStack = () =>{
+return(
+  <Stack.Navigator 
+                    initialRouteName="exerciseAll" >
+      <Stack.Screen name="Home" 
+        	          component={exercisesAll}  
+                    options={{title: 'Oefeningen', 
+          }} />
+      <Stack.Screen 
+                    name="exerciseDetails" 
+                    component={exerciseDetails} 
+                    options={{title: 'Details', 
+          }}  />
+  </Stack.Navigator>
+>>>>>>> 0092feadcf27b24c0751bec1681b440e583d53dd
   );
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-  flex: 1,
-  backgroundColor: '#fff',
-  alignItems: 'center',
-  justifyContent: 'center',
-  
-},
-  item: {
-      padding: 15,
-      marginTop: 16,
-      borderColor: '#DA6C55',
-      borderWidth: 1,
-      borderStyle: 'dashed',
-      borderRadius: 60,
-      flexDirection: 'row',
-      width: 180,
-      margin: 3,
-      height: 65,
-  },
-  itemtext: {
-      color: '#DA624E',
-      marginLeft: 10,
-  },
-
-  list: {
-      flex: 1,
-      padding: 20,
-      backgroundColor: '#F0C7C5',
-  },
-  content: {
-      padding: 40,
-      flex: 1,
-  },
-  container: { flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'stretch', },
-imageBackground:{ flex: 1, justifyContent: 'center', alignItems: 'center', },
-text: { fontSize: 25, fontStyle: 'italic', color: 'purple', textAlign: 'center', },
-
-});
 
 export default ExerciseScreen
