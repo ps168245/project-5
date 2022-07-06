@@ -62,13 +62,11 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $attr = $request->validate([
                 'name' => 'required|string|max:255',
-                'email' => 'required|string|email|unique:users,email,',
-                'password' => 'required|string|min:6|confirmed'
+                'email' => 'required|string|email'
             ]);
     
             $user->name = $attr['name'];
             $user->email = $attr['email'];
-            $user->password = bcrypt($attr['password']);
             $user->save();
     
             return view('user.show', ['user' => $user]);
