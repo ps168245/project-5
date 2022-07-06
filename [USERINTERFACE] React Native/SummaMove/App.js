@@ -32,27 +32,21 @@ const MyTabs = () => {
             <MaterialCommunityIcons name="check" color={color} size={26} backgroundColor={'#fff'} />
           ), }}/>
           
-      <Tab.Screen 
-      name="Home" 
-      component={Homepage}         
-      options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} backgroundColor={'#fff'} />
-          ), }}/>
-          
-      <Tab.Screen 
-          name="About_us" 
-          component={About_us} 
-          options={{
-            tabBarLabel: 'About us',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="account-multiple" color={color} size={26} />
-            ),
-          
-          }}/>
-
-    </Tab.Navigator>
+          <Tab.Screen
+          name='Exercises'
+          component={ExerciseScreen} 
+          options={{ color: '#8DF0AC', 
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="list" color={'#f9009a'} size={20} />
+      ), }}/>
+          <Tab.Screen
+          name='About us'
+          component={aboutus} 
+          options={{ color: '#8DF0AC',
+      tabBarIcon: ({ color, size }) => (
+        <Ionicons name="information-circle" color={'#f9009a'} size={20} />
+      ), }} />
+      </Tab.Navigator>
     
   );
 }

@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 
 
 
-const Aboutus = () => {
+export default function Aboutus() {
     return (
   <View style={styles.container}>
 
@@ -66,7 +66,7 @@ const Aboutus = () => {
     // alignitems: 'center',
     // textalign: 'center',
     
-    color: 'black',
+    color: '#f9009a',
     // marginLeft: '20%',
     // marginRight: "20%",
     // padding: 10,
@@ -103,7 +103,6 @@ const Aboutus = () => {
     // textShadowColor:'#585858',
     // textShadowRadius:0,
     // textShadowOffset:{width: 4, height: 4},
-
     textShadowColor: 'rgba(0, 0, 0, 0.25)',
     textShadowOffset: {width: 4, height: 4},
     textShadowRadius: 5
@@ -129,6 +128,3 @@ const Aboutus = () => {
   }
 
 });
-
-
-export default Aboutus 
