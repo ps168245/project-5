@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Exercise;
-
-use Illuminate\Support\Facades\Route;
 
 class ExerciseController extends Controller
 {
@@ -17,8 +14,7 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        //
-        return Exercise::All();
+        return view('exercise.index', ['items' => Exercise::all()]);
     }
 
     /**
@@ -26,7 +22,10 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    public function create()
+    {
+        return view('exercise.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,11 +35,24 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required|max:255',
-        ]);
-        return Exercise::create($request->all());
+        try
+        {
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'description' => 'required|max:1000',
+            ]);
+
+            $exercise = Exercise::create([
+                'name' => $validated['name'],
+                'description' => $validated['description'],
+            ]);
+
+            return view('exercise.show', ['exercise' => $exercise]);
+        }
+        catch(\Exception $e)
+        {
+            return "error: " . $e->getMessage();
+        }
     }
 
     /**
@@ -49,14 +61,21 @@ class ExerciseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Exercise $exercise)
+    public function show($id)
     {
-        //
-        return $exercise;
+        return view('exercise.show', ['exercise' => Exercise::Find($id)]);
     }
 
-
-
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return view('exercise.edit', ['exercise' => Exercise::Find($id)]);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -65,11 +84,24 @@ class ExerciseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Exercise $exercise)
+    public function update(Request $request, $id)
     {
-        //$exercise->update($request->all()); return $exercise;
-        $exercise->update($request->all());
-        return response()->json($exercise, 202);
+        try
+        {
+            $exercise = Exercise::findOrFail($id);
+            $validated = $request->validate([
+                'name' => 'required|max:255',
+                'description' => 'required|max:255',
+            ]);
+
+            $exercise->name = $validated['name'];
+            $exercise->description = $validated['description'];
+            $exercise->save();
+        }
+        catch(\Exception $e)
+        {
+            return "error: " . $e->getMessage();
+        }
     }
 
     /**
@@ -78,9 +110,17 @@ class ExerciseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Exercise $exercise)
+    public function destroy($id)
     {
-        // $exercise->delete();
-        return response()->json($exercise->delete() ? "Succesvol verwijderd":"Probleem met het verwijderen van de exercise", 202);
+        try
+        {
+            $exercise = Exercise::findOrFail($id);
+            $exercise->delete();
+            return redirect('/exercise');
+        }
+        catch(\Exception $e)
+        {
+            return "error: " . $e->getMessage();
+        }
     }
 }

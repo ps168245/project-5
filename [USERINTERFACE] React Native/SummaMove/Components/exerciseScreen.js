@@ -13,7 +13,7 @@ const ExerciseScreen = () => {
     );
 }
 
-function List ({navigation})  {
+const List = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -74,7 +74,6 @@ function Details({ route }) {
           <View style={{}}>
               <Text style={{marginTop: 10, textAlign: 'center', fontWeight: 'bold', fontSize: 20, color: '#DA624E'}}>{name}</Text>
               <Text style={{marginTop: 20, padding: 10, color: '#DA624E'}}>{description}</Text>
-              </View>
           </View>
       </View>
   );

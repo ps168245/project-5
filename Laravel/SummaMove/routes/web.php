@@ -1,6 +1,9 @@
 <?php
-
+use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// protected routes
+Route::resource("user", UserController::class);
+Route::resource("exercise", ExerciseController::class);
