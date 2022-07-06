@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, Linking } from 'react-native'
 
 
 export default function Aboutus() {
@@ -8,9 +8,12 @@ export default function Aboutus() {
             <Text style={styles.headertext}>About us</Text>
             <Text style={styles.subHeaderText}>Feel free to read all about us!</Text>
             <Text style={[styles.secondHeader, styles.bold]} >What is this app made for?</Text>
-            <Text style={styles.secondHeaderText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque suscipit placerat sem sed feugiat. Suspendisse nec mi eu enim molestie fringilla sit amet sit amet libero. Sed pulvinar et neque non auctor. Proin cursus orci ut pharetra vulputate. Phasellus pretium eu elit a suscipit. Fusce rhoncus dui elit, in rhoncus lorem placerat et. Sed varius, sem non luctus elementum, diam ante lobortis neque, at consectetur neque velit non tellus. Donec hendrerit rhoncus ipsum, ut viverra sem vehicula nec.</Text>
-            <Text style={[styles.textWithoutLink, styles.bold]}>For more info please check our website:</Text><Text style={[styles.textWithoutLink, styles.underline, styles.colorBlueLink]}> http://example.com</Text>
-
+            <Text style={styles.secondHeaderText}>In this app you can read all about the exercises! You can learn how to use them and add them to your exercise program. They are made step by step.</Text>
+            <Text style={[styles.textWithoutLink, styles.bold]}>For more info please check our website:</Text>
+            <Text style={[styles.textWithoutLink, styles.underline, styles.colorBlueLink]}
+      onPress={() => Linking.openURL('http://Summacollege.nl')}>
+  http://Summacollege.nl
+</Text>
             <Text style={styles.versionOfApplicationText}>App version number: </Text>
             <Text style={styles.versionOfApplicationText}>5.2.0 Beta</Text>
         </View>
