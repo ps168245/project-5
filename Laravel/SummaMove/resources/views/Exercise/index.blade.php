@@ -2,6 +2,67 @@
 
 @section('content')
 
+
+<div id='users_table' class='flex-1 bg-white border border-gray-700 min-w-half flex-initial w-16'>
+    
+</div>
+
+<script>
+    let token = null
+
+    const Post_request = async (url = '', data = {}) =>
+    {
+            const response = await fetch(url, {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'same-origin',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            
+            return response.json();
+    }
+
+    const login = (email = null, password = null) =>
+    {
+        rightdata = email != null ? password != null ? "" : "password or email is not filled in" : "password or email is not filled in"
+        if (rightdata == "")
+        {
+            Post_request('', { answer: 42 })
+            .then((data) => {
+            console.log(data); // JSON data parsed by `data.json()` call
+            });
+        }
+        else
+        {
+            alert(rightdata)
+        }
+
+    }
+
+    const get_table_data = async () =>
+    {
+        const res = await fetch('https://basbobby.nl/SummaMove/public/api/exercise')
+        const answer = await res.json()
+        return answer
+    }
+
+    const fill_table = () =>
+    {
+        const data = get_table_data()
+
+        let table = document.getElementById("users_table")
+        let table_content = document.createElements
+
+    }
+
+</script>
+
+
+
 <?php
     echo "
     <table class='flex-1 bg-white border border-gray-700 min-w-half flex-initial w-16'>
