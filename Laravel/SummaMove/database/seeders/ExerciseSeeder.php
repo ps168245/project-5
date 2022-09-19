@@ -17,7 +17,7 @@ class ExerciseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('exercises')->truncate();
+        // DB::table('exercises')->truncate();
         DB::table('exercises')->insert([
             'name' => "Squat",
             'description' => "
